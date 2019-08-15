@@ -18,7 +18,7 @@ myFileSystem.readFile (`${__dirname}/data/person.json`,
             let obj = JSON.parse(fileString);
             obj.firstName = 'Lillian';
             fs.writeFile(`${__dirname}/data/person.json`, JSON.stringify(obj), () => {
-                console.log('done');
+                console.log('Changed with callback:',JSON.stringify(obj));
             })
         }
     });
@@ -29,9 +29,9 @@ myFileSystem.readFile (`${__dirname}/data/person.json`,
 myFileSystem.readFilePromises (`${__dirname}/data/person.json`)
     .then(fileString => {
         let obj = JSON.parse(fileString.toString());
-        obj.lastName = 'Gales';
+        obj.firstName = 'Frank';
         fs.writeFile(`${__dirname}/data/person.json`, JSON.stringify(obj), (error) => {
-            console.log('done');
+            console.log('Changed with promise:',JSON.stringify(obj));
         })
     }).catch(error => console.error(error));
 
